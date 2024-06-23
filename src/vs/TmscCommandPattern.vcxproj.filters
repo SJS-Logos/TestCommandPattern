@@ -21,10 +21,10 @@
     <ClCompile Include="..\TmscCommandPattern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\TmscFindInterfaceIdCommand.cpp">
+    <ClCompile Include="..\TmscGetValueCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\TmscGetValueCommand.cpp">
+    <ClCompile Include="..\TmscFindInterfaceIdOperation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +32,10 @@
     <ClInclude Include="..\mock_tmsc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\TmscFindInterfaceIdCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\TmscGetValueCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\MapsInvoker.h">
+    <ClInclude Include="..\TmscFindInterfaceIdOperation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -21,13 +21,12 @@
   <ItemGroup>
     <ClCompile Include="..\mock_tmsc.cpp" />
     <ClCompile Include="..\TmscCommandPattern.cpp" />
-    <ClCompile Include="..\TmscFindInterfaceIdCommand.cpp" />
+    <ClCompile Include="..\TmscFindInterfaceIdOperation.cpp" />
     <ClCompile Include="..\TmscGetValueCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\MapsInvoker.h" />
     <ClInclude Include="..\mock_tmsc.h" />
-    <ClInclude Include="..\TmscFindInterfaceIdCommand.h" />
+    <ClInclude Include="..\TmscFindInterfaceIdOperation.h" />
     <ClInclude Include="..\TmscGetValueCommand.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

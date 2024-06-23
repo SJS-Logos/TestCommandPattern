@@ -1,4 +1,4 @@
-#include "TmscFindInterfaceIdCommand.h"
+#include "TmscFindInterfaceIdOperation.h"
 #include "mock_tmsc_invoker.h"
 
 #include <iostream>
@@ -8,7 +8,7 @@
 
 int main()
 {
-  auto operations = std::make_unique<TmscFindInterfaceIdOperation<mock_tmsc_invoker>>();
+  auto operations = std::make_unique<TmscFindInterfaceIdOperation>();
   auto callback = [](bool ok, int interfaceId) {
     if (ok) {
       std::cout << "Found interface hello " << interfaceId << "\n";
@@ -18,7 +18,7 @@ int main()
     }
   };
   std::string helloString = std::string("hello");
-  operations->action( helloString, callback );
+  operations->action<mock_tmsc_invoker>( helloString, callback );
 
   std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   std::cout << "Program end\n";
