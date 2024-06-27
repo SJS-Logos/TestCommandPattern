@@ -8,6 +8,7 @@
 #include "mock_tmsc.h"
 #include "TmscGetValueCommand.h"
 
+template <class invoker>
 class TmscFindInterfaceIdOperation {
 public:
   using TmscFindInterfaceCallback = std::function<void(bool ok, int interfaceIndex)>;
@@ -15,7 +16,6 @@ public:
   TmscFindInterfaceIdOperation() = default;
   ~TmscFindInterfaceIdOperation() = default;
 
-  template <class invoker>
   void action(const std::string& interfaceName, TmscFindInterfaceCallback onCompletedCallback)
   {
     onCompletedCallback_ = onCompletedCallback;
@@ -44,13 +44,23 @@ public:
       }
       };
     command_ = TmscGetValueCommand::create(OID_IP_NAME, 0, onGetCommandCompleted);
-
     invoker::execute(*command_);
   }
 
 private:
-  static bool strequal(const std::string& s, const char* valueStr, size_t length);
-  static bool checkResult(session_error error, tms_result_t result, int conversionResult);
+  static bool checkResult(session_error error, tms_result_t result, int conversionResult) {
+    return error == SESS_OK && result == TMS_RES_OK && conversionResult == 0;
+  }
+
+  static bool strequal(const std::string& s, const char* valueStr, size_t length)
+  {
+    if (s.length() != length) {
+      return false;
+    }
+    else {
+      return memcmp(s.c_str(), valueStr, length) == 0;
+    }
+  }
 
   std::unique_ptr<TmscGetValueCommand> command_;
   std::string interfaceName_;
